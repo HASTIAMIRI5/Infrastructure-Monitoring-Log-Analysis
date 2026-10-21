@@ -4,126 +4,91 @@
   <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80" alt="Infrastructure monitoring banner" width="100%" />
 </p>
 
-A hands-on lab focused on monitoring system health, reviewing logs, and identifying warning conditions across infrastructure and applications.
+<div align="center">
+  <img alt="Status" src="https://img.shields.io/badge/Status-Portfolio%20Project-blue" />
+  <img alt="Focus" src="https://img.shields.io/badge/Focus-Infrastructure%20Monitoring%20%26%20Log%20Analysis-0A66C2" />
+  <img alt="Type" src="https://img.shields.io/badge/Type-IT%20Operations%20%26%20Troubleshooting-4B8BBE" />
+</div>
 
-## Overview
+A formal IT operations portfolio project focused on monitoring system health, reviewing logs, and diagnosing infrastructure and application issues.
 
-This repository provides a practical foundation for infrastructure operations and incident investigation. It walks through the process of checking system health, reviewing logs, recognizing warning conditions, and documenting findings with clear corrective actions.
+## Project Overview
+
+This repository documents a practical monitoring and troubleshooting lab for IT administrators and support engineers. It demonstrates how to review system performance, identify anomalies, correlate resource metrics with application and system logs, and communicate findings in a structured incident report.
 
 ## Objectives
 
-- Monitor CPU, memory, disk, network, and service health
-- Review system and application logs for warnings, anomalies, and failures
-- Correlate resource metrics with log events to identify likely root causes
-- Document findings in a professional incident-report style
-- Practice troubleshooting and corrective-action workflows
+- Monitor CPU, memory, disk, and network health
+- Validate the status of services and application dependencies
+- Inspect system and application logs for errors, warnings, and recurring failures
+- Correlate monitoring data with log evidence to determine likely root causes
+- Produce professional incident documentation and remediation notes
 
-## Lab Tasks
+## Core Focus Areas
 
-### Task 1: Baseline the environment
-- Check host health and uptime
-- Review CPU, memory, and disk utilization
-- Confirm service status and application availability
-
-### Task 2: Monitor key system resources
-- Inspect load averages, swap usage, and I/O wait
-- Review filesystem capacity and inode pressure
-- Validate network connectivity and latency
-
-### Task 3: Analyze logs
-- Review system logs for warnings and critical events
-- Inspect application logs for exceptions, timeouts, and retries
-- Search security logs for failed access attempts or blocked events
-
-### Task 4: Correlate findings
-- Link trends in resource use to log timestamps
-- Determine whether the issue is a root cause or a downstream symptom
-- Identify dependencies and likely failure points
-
-### Task 5: Document the incident
-- Record observations, logs, and metrics
-- Summarize probable cause and impact
-- Recommend corrective actions and follow-up validation
-
-## Screenshot Gallery
-
-The sections below are designed to showcase the sort of evidence collected during a monitoring and troubleshooting workflow.
-
-### Monitoring dashboard view
-
-![Resource monitor example](https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80)
-
-### Log review and event correlation
-
-![Log analysis example](https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80)
-
-### Incident response and documentation
-
-![Incident report example](https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80)
-
-## Scope
-
-- CPU usage and saturation
-- Memory and swap pressure
-- Disk capacity and I/O health
-- Network reliability and latency
-- Service uptime and dependency health
-- Application and system logs
-- Authentication and security events
-- Incident documentation and remediation notes
-
-## Workflow
-
-1. Baseline the environment
-2. Review resource data
-3. Inspect logs for anomalies
-4. Correlate evidence
-5. Document findings
-6. Recommend corrective actions
-
-## Monitoring Checklist
-
-See [docs/monitoring-checklist.md](docs/monitoring-checklist.md) for a structured checklist used during routine operations and troubleshooting.
-
-## Log Analysis Guide
-
-See [docs/log-analysis-guide.md](docs/log-analysis-guide.md) for guidance on reviewing log data and identifying operational patterns.
-
-## Incident Report Template
-
-See [docs/incident-report-template.md](docs/incident-report-template.md) for a formal template to document findings and remediation.
-
-## Sample Findings
-
-### 1. Disk pressure caused application slowdown
-- High I/O wait and near-full storage
-- Repeated timeout events in logs
-- Root cause linked to stale logs and temporary files
-
-### 2. Memory exhaustion triggered service restarts
-- OOM warnings and repeated process restarts
-- Elevated memory usage before the failure window
-- Root cause likely related to workload spikes or a memory leak
-
-### 3. Dependency failure caused HTTP 500s
-- Backend errors and request timeouts
-- Downstream service failure detected in logs
-- Corrective action involved restoring dependency health and validating connectivity
-
-## Final Presentation-Style Summary
-
-This lab demonstrates how infrastructure monitoring and log analysis work together to detect, diagnose, and resolve operational issues. By reviewing system metrics and correlating them with log evidence, analysts can distinguish between symptoms and root causes, document incidents clearly, and recommend actionable remediation steps.
-
-The overall objective is not only to identify failures, but to build a repeatable process for monitoring, investigation, and documentation. This makes the lab valuable for both technical troubleshooting and communication with stakeholders, especially when reporting service degradation, outages, or recurring infrastructure issues.
+- Infrastructure health monitoring
+- Log review and anomaly detection
+- Service and dependency validation
+- Root-cause analysis and troubleshooting
+- Operational documentation and reporting
 
 ## Deliverables
 
-- Monitoring notes
-- Incident summary report
-- Corrective action log
-- Sample findings documentation
-- Recommendations for preventive monitoring
+- Monitoring checklist
+- Log analysis guide
+- Incident report template
+- Sample findings and corrective actions
+- Portfolio-ready summary for presentations and interviews
+
+## Documentation
+
+- [Monitoring Checklist](docs/monitoring-checklist.md)
+- [Log Analysis Guide](docs/log-analysis-guide.md)
+- [Incident Report Template](docs/incident-report-template.md)
+- [Lab Tasks and Objectives](docs/lab-tasks.md)
+- [Final Presentation Summary](docs/final-presentation-summary.md)
+
+## Lab Workflow
+
+1. Baseline the environment
+2. Review resource utilization
+3. Inspect logs for warnings and failures
+4. Correlate events across services and systems
+5. Document incident evidence and recommended action
+6. Validate the resolution and present findings clearly
+
+## Example Findings
+
+### Disk pressure and performance degradation
+- High I/O wait and nearly full file systems
+- Log entries indicate timeouts, failed writes, and delayed processing
+- Root cause linked to storage exhaustion and stale log accumulation
+
+### Memory exhaustion and service instability
+- Repeated restarts and OOM alerts
+- Elevated memory usage observed before the failure window
+- Likely root cause: workload spike or inefficient memory use
+
+### Dependency failure affecting application availability
+- HTTP 500s, timeouts, and backend queue buildup
+- Logs confirm downstream service or database unavailability
+- Corrective actions include dependency validation and service recovery
+
+## Final Demo Summary
+
+This project reflects a realistic infrastructure troubleshooting workflow used in IT operations. It shows how monitoring tools and logs are combined to identify service degradation, understand the timeline of events, and document root causes in a professional and repeatable way.
+
+The value of this lab is not only technical troubleshooting, but also clear communication: a strong monitoring and log analysis process improves uptime, reduces recovery time, and supports better operational decisions across the environment.
+
+## Portfolio Value
+
+This project demonstrates:
+- practical troubleshooting ability
+- operational awareness of system health
+- monitoring and log-analysis fundamentals
+- structured incident documentation skills
+- readiness for IT support, systems administration, and infrastructure roles
 
 ## License
 
-This project is intended for educational and lab use.
+Educational and portfolio use.

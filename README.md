@@ -1,112 +1,73 @@
 # Infrastructure Monitoring & Log Analysis
 
+A practical lab focused on monitoring system health, reviewing logs, and identifying anomalies across infrastructure and applications.
+
 ## Overview
 
-This lab focuses on monitoring system health, reviewing logs, and identifying warning conditions or service anomalies. The goal is to practice basic operational troubleshooting, correlate metrics with logs, and document findings with clear corrective actions.
+This repository is designed for hands-on practice in infrastructure monitoring and log analysis. It demonstrates how to baseline system health, identify warning conditions, review service and application logs, and document findings with corrective actions.
 
 ## Objectives
 
 - Monitor key system resources and services
-- Review both system and application logs
-- Identify warnings, anomalies, and recurring failure patterns
-- Correlate events across services and infrastructure layers
-- Document findings and recommended corrective actions
+- Review system and application logs
+- Detect warnings, anomalies, and failure patterns
+- Correlate monitoring data with log evidence
+- Document findings and recommended actions
 
-## Scope
+## Lab Scope
 
-- CPU usage
-- Memory and swap usage
+- CPU, memory, and disk utilization
+- I/O bottlenecks and resource saturation
+- Network latency, packet loss, and connection issues
+- Service uptime and dependency health
+- Application and system event logs
+- Security and authentication events
+- Incident documentation and remediation
+
+## Monitoring Checklist
+
+### System Resources
+- CPU usage and load averages
+- Memory utilization and swap activity
 - Disk usage and inode pressure
-- Network reliability and latency
-- Service status and uptime
-- Application logs
-- System logs
-- Authentication and security events
-- Error and warning patterns
+- I/O wait and read/write contention
+- Network throughput and errors
 
-## Lab Workflow
+### Services and Applications
+- Process state and crash loops
+- Port availability and listening services
+- Restart counts and uptime
+- Dependency service health
+- Application error rates and failed requests
+
+## Log Analysis Workflow
 
 1. Baseline the environment
-   - Check system uptime and health
-   - Review CPU, memory, disk, and network status
-   - Confirm services are running as expected
+   - Confirm the system is healthy and services are running
+   - Review resource utilization trends
+   - Identify any recent changes or unusual activity
 
-2. Review monitoring data
-   - Identify spikes or sustained resource pressure
-   - Look for unusual process activity or failed services
-   - Check for abnormal network traffic, packet loss, or latency
+2. Review logs for warning patterns
+   - Search for errors, warnings, and critical events
+   - Check service restarts, failed jobs, and repeated exceptions
+   - Look for authentication failures or denied access attempts
 
-3. Analyze logs
-   - Review system logs for warnings, crashes, failed services, and kernel errors
-   - Review application logs for exceptions, timeouts, or dependency failures
-   - Search for repeated patterns and error bursts
+3. Correlate events
+   - Connect spikes in CPU, memory, or disk usage with log timestamps
+   - Match application errors to dependency failures or network issues
+   - Determine whether the issue is a symptom or root cause
 
-4. Correlate findings
-   - Connect metrics with log events
-   - Identify likely root causes rather than symptoms
-   - Look for dependencies that may be failing
-
-5. Document findings
-   - Record observed anomalies
-   - Explain probable cause
-   - Recommend corrective actions
-   - Note follow-up validation steps
-
-## Common Monitoring Checks
-
-### System resources
-- CPU load and saturation
-- Memory usage and swap activity
-- Disk space and filesystem health
-- I/O wait and file contention
-- Network throughput and connection errors
-
-### Services
-- Process status
-- Port listening status
-- Service restarts / crash loops
-- Dependency service health
-- TLS or certificate validation issues
-
-### Applications
-- HTTP 4xx / 5xx errors
-- Slow requests
-- Database connection errors
-- Timeouts
-- Queue backlog or job failures
-
-## Log Review Checklist
-
-### System logs
-- Kernel errors
-- Memory pressure warnings
-- Disk full alerts
-- Service failures
-- Authentication failures
-- Scheduled job failures
-
-### Application logs
-- Stack traces
-- Retry loops
-- Failed database calls
-- Timeout exceptions
-- Dependency errors
-
-### Security logs
-- Failed login attempts
-- Privilege escalation events
-- Port scanning or unauthorized access
-- Blocks or firewall denials
+4. Document findings
+   - Note the evidence and impact
+   - Explain the likely cause
+   - Record corrective actions and validation steps
 
 ## Sample Log Commands
 
-Linux / Unix examples:
-
 ```bash
 top
-
-df -h
 free -m
+df -h
 vmstat 1
 iostat
 ss -tulpn
@@ -115,101 +76,85 @@ tail -f /var/log/syslog
 grep -Ei "error|warn|fail|critical" /var/log/*.log
 ```
 
-Application example:
+Application log review:
 
 ```bash
 tail -f /path/to/app.log
 grep -Ei "ERROR|WARN|Exception|Timeout" /path/to/app.log
 ```
 
-## Sample Incident Investigation Template
+## Example Incident Template
 
 ### Title
-- Example: Web app performance degradation after midnight
+Example: Database latency caused elevated HTTP 500 errors
 
 ### Summary
-- Brief description of the issue and business impact
+A brief explanation of the issue, scope, and impact.
 
 ### Timeline
-- Time when symptoms began
-- Time when alerts were triggered
-- Time when corrective action was taken
+- Start time
+- Alert trigger time
+- Mitigation time
+- Resolution time
 
-### Observed Symptoms
-- High CPU usage
-- Increased error rate
-- Database latency
+### Symptoms
+- High CPU or memory usage
+- Slow requests
+- Queue backlog
 - Service restarts
 
 ### Evidence
-- Log excerpts
-- Monitoring screenshots or metrics
-- Relevant alerts
+- Log snippets
+- Monitoring screenshots
+- Alerts and timestamps
 
 ### Probable Cause
-- Example: disk usage exceeded 90%, causing slow writes and delayed responses
-
-### Impact
-- User-facing slowdowns
-- Failed requests
-- Increased support tickets
+Example: Disk pressure and slow database queries caused request timeouts.
 
 ### Corrective Actions
-- Increased disk capacity
-- Cleaned stale logs
-- Restarted dependent service
-- Optimized database queries
+- Restarted the affected service
+- Cleared stale logs
+- Increased capacity
+- Tuned database query performance
 
 ### Validation
-- Confirm normal resource use
-- Recheck logs for recurrence
-- Verify service metrics returned to baseline
+- Confirm resource metrics returned to baseline
+- Recheck error rate and logs
+- Verify application uptime and user impact
 
 ## Sample Findings
 
-### 1. Disk pressure caused application slowdown
-- Symptoms: high latency, failed writes, growing queued jobs
-- Evidence: disk usage above 95%, repeated I/O timeout events in logs
-- Root cause: logs and temporary files consumed storage
-- Fix: rotate logs, clear stale files, expand disk capacity if needed
+### 1. Disk Pressure Caused Slow Application Response
+- Signs: high I/O wait, filesystem near capacity, growing queued jobs
+- Evidence: log entries show I/O timeout and failed writes
+- Root cause: stale logs and temporary files depleted available storage
+- Fix: rotate logs, clean temporary files, expand storage if required
 
-### 2. Memory exhaustion triggered service restarts
-- Symptoms: app crashes, process exits, elevated restart count
-- Evidence: memory alarms, kernel OOM killer logs
-- Root cause: memory leak or oversized workload
-- Fix: investigate heap usage, optimize memory consumption, scale resources
+### 2. Memory Exhaustion Triggered Service Restarts
+- Signs: elevated memory usage, OOM messages, crash loops
+- Evidence: kernel logs indicate out-of-memory events
+- Root cause: memory leak or workload spikes
+- Fix: investigate memory growth, monitor service limits, scale resources
 
-### 3. Dependency failure caused widespread HTTP 500s
-- Symptoms: user-facing errors, elevated backend latency
-- Evidence: application logs show timeout to database or upstream API
-- Root cause: downstream dependency unavailable
-- Fix: restart dependency, check connection pool, validate network access
+### 3. Dependency Failure Caused Widespread HTTP 500s
+- Signs: application errors, backend latency, failed upstream calls
+- Evidence: application logs show timeout to database or API dependency
+- Root cause: dependent service unavailable or overloaded
+- Fix: validate dependency health, restart service if needed, review connection limits
 
 ## Deliverables
 
 - Monitoring notes
-- Incident report
+- Incident summary
 - Corrective action log
-- Sample findings summary
+- Sample findings report
 - Recommendations for preventive monitoring
 
-## Assessment Criteria
+## Documentation
 
-- Quality of system and service checks
-- Accuracy of log analysis
-- Ability to identify warning patterns
-- Correlation between metrics and log evidence
-- Clarity of incident documentation
-- Practicality of corrective actions
-
-## Suggested Final Deliverable Format
-
-- Short summary of the environment
-- List of monitored resources
-- Key warning conditions identified
-- Log findings and correlation notes
-- Root cause analysis
-- Remediation steps and follow-up recommendations
+- [Monitoring Checklist](docs/monitoring-checklist.md)
+- [Log Analysis Guide](docs/log-analysis-guide.md)
+- [Incident Report Template](docs/incident-report-template.md)
 
 ## License
 
